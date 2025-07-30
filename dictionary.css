@@ -1,138 +1,105 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;600&display=swap');
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
 
-:root {
-    --bg-color-light: #f2f6fc;
-    --bg-color-dark: #121212;
-    --card-color-light: rgba(255, 255, 255, 0.9);
-    --card-color-dark: rgba(25, 25, 25, 0.85);
-    --text-color-light: #222;
-    --text-color-dark: #f0f0f0;
-    --accent: #6366f1;
-    --glass-blur: blur(12px);
+*:not(i) {
+    font-family: "Poppins", sans-serif;
 }
 
 body {
     background-color: #ae9cff;
-    /*font-family: 'Inter', sans-serif;
-    margin: 0;
-    padding: 0;
-    background: var(--bg-color-light);
-    color: var(--text-color-light);
     display: flex;
     align-items: center;
-    justify-items: center;
+    justify-content: center;
     min-height: 100vh;
-    transition: background 0.3s ease, color 0.3s ease;
-    flex-direction: column;*/
-}
-
-/* Dark Mode */
-body.dark-mode {
-    background: var(--bg-color-dark);
-    color: var(--text-color-dark);
+    padding: 20px;
 }
 
 .container {
-   background-color: #ffffff;
-   width: 90vmin;
-   position: absolute;
-   transform: translate(-50%, -50%);
-   top: 50%;
-   left: 50%;
-   padding: 80px 50px;
-   border-radius: 10px;
-   box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
-}
-
-body.dark-mode .container {
-    background: var(--card-color-dark);
-}
-
-h1 {
-    font-size: 1.8rem;
-    color: var(--accent);
-    margin-bottom: 1.5rem;
-    text-align: center;
-}
-
-input {
-    width: 65%;
-    padding: 0.75rem 1rem;
-    font-size: 1rem;
-    border: none;
-    border-radius: 10px;
-    margin-bottom: 1rem;
-    outline: none;
-    box-shadow: 0 0 0 2px var(--accent);
-    background: #fff;
-    transition: all 0.2s ease;
-}
-
-input:focus {
-    box-shadow: 0 0 0 3px var(--accent);
-}
-
-button {
-    padding: 0.75rem 1.2rem;
-    background-color: var(--accent);
-    color: rgb(43, 38, 38);
-    border-radius: 10px;
-    font-weight: 600;
-    margin-left: 1rem;
-    cursor: pointer;
-    transition: background 0.3s ease;
-}
-
-button:hover {
-    background-color: #4f46e5;
-}
-
-#result {
-    margin-top: 2rem;
-    text-align: left;
-    padding: 1rem;
-    background: rgba(0, 0, 0, 0.05);
-    border-radius: 12px;
-    animation: fadeIn 0.5s ease;
-}
-
-body.dark-mode #result {
-    background: rgba(255, 255, 255, 0.05);
-}
-
-/*Responsive */
-@media (max-width: 600px) {
-    input {
-        width: 100%;
-        margin-bottom: 1rem;
-    }
-    button {
-        width: 100%;
-        margin-left: 0;
-    }
-}
-
-/* Smooth fade animation */
-@keyframes fadeIn {
-    from {
-        opacity: 0;
-        transform: translateY(15px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.theme-toggle {
+    background-color: #ffffff;
+    width: 90vmin;
     position: absolute;
-    top: 20px;
-    right: 2px;
-    font-size: 1.2rem;
-    background: transparent;
-    border:blur;
+    transform: translate(-50%, -50%);
+    top: 50%;
+    left: 50%;
+    padding: 80px 50px;
+    border-radius: 10px;
+    box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
+    position: relative;
+    transform: none;
+    top: auto;
+    left: auto;
 }
 
-button.theme-toggle {
-    margin-right: 1.9rem;
+.search-box {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+} 
+
+.search-box input {
+    padding: 5px;
+    width: 70%;
+    border: none;
+    outline: none;
+    border-bottom: 3px solid #ae9cff;
+    font-size: 16px;
 }
+
+.search-box button {
+    padding: 15px 0;
+    width: 25%;
+    background-color: #ae9cff;
+    border: none;
+    outline: none;
+    color: #ffffff;
+    border-radius: 5px;
+}
+
+.result {
+    position: relative;
+}
+
+.result h3 {
+    font-size: 30px;
+    color: #1f194c;
+}
+
+.result .word {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 80px;
+}
+
+.result button {
+     background-color: transparent;
+     color: ae9cff;
+     border: none;
+     outline: none;
+     font-size: 18px;
+}
+
+.result .details {
+    display: flex;
+    gap: 10px;
+    color: #b3b6d4;
+    margin: 5px 0 20px 0;
+    font-size: 14px;
+}
+
+.word-meaning {
+    color: #575a7b;
+   
+}
+
+.word-example,
+.word-meaning {
+    color: #575a7b;
+    font-style: italic;
+    border-left: 5px solid #ae9cff;
+    padding-left: 20px;
+    margin-top: 30px;
+}
+
