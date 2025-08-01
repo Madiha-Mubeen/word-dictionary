@@ -64,10 +64,6 @@ body {
     border-radius: 5px;
 }
 
-.word .button i:hover {
-    transform: scale(1);
-    animation: translateY 0.4s ease;
-}
 .result {
     position: relative;
 }
