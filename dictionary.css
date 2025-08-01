@@ -10,6 +10,7 @@
 
 body {
     background-color: #ae9cff;
+    background: url('dic-bg.png');
     display: flex;
     align-items: center;
     justify-content: center;
@@ -18,7 +19,7 @@ body {
 }
 
 .container {
-    background-color: #ffffff;
+    background-color: #c5dfcf;
     width: 90vmin;
     position: absolute;
     transform: translate(-50%, -50%);
@@ -33,6 +34,11 @@ body {
     left: auto;
 }
 
+.container:hover {
+    transform: scale(1.1);
+    animation: translateY 0.3s ease-in-out;
+}
+
 .search-box {
     width: 100%;
     display: flex;
@@ -44,20 +50,24 @@ body {
     width: 70%;
     border: none;
     outline: none;
-    border-bottom: 3px solid #ae9cff;
+    border-bottom: 3px solid #7acc6f;
     font-size: 16px;
 }
 
 .search-box button {
     padding: 15px 0;
     width: 25%;
-    background-color: #ae9cff;
+    background-color: #a9ca5b;
     border: none;
     outline: none;
     color: #ffffff;
     border-radius: 5px;
 }
 
+.word .button i:hover {
+    transform: scale(1);
+    animation: translateY 0.4s ease;
+}
 .result {
     position: relative;
 }
