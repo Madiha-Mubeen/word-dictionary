@@ -32,12 +32,10 @@ body {
     padding: 80px 50px;
     border-radius: 10px;
     box-shadow: 0 20px 40px rgba(38, 33, 61, 0.2);
-}
-/*
-.container:hover {
-    transform: scale(1);
-    animation: translateY 0.3s ease-in-out;
-} */
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+} 
 
 .search-box {
     width: 100%;
@@ -51,7 +49,7 @@ body {
     border: none;
     outline: none;
     border-bottom: 3px solid #7acc6f;
-    font-size: 1rem;
+    font-size: 1.3rem;
     font-family: "Emphesis", cursive;
 }
 
@@ -127,4 +125,14 @@ body {
 
 .detail h3 {
     font-size: 3rem;
+}
+
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        padding: 1rem;
+    }
+    .card {
+        width: 100%;
+    }
 }
