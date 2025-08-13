@@ -48,3 +48,34 @@ function playSound() {
     sound.play();
    }
 }
+
+const petalImages = [
+    "flower.png",
+    "flower1.png",
+    "flower2.png",
+    "rose1.png",
+    "star-anise.png"
+];
+
+function createPetal() { 
+    const petal = document.createElement("img");
+    petal.classList.add("petal");
+
+    const randomIndex = Math.floor(Math.random() * petalImages.length);
+    petal.src = petalImages[randomIndex];
+
+    petal.style.left = Math.random() * window.innerWidth + "px";
+    const size = Math.random() * 30 + 20;
+    petal.style.width = `${size}px`;
+
+    const fallDuration = Math.random() * 4 + 6;
+    petal.style.animationDuration = `${fallDuration}s, ${Math.random() * 2 + 3}s`;
+
+    petal.style.transform = `rotate(${Math.random() * 360}deg)`;
+    document.getElementById("falling-petals").appendChild(petal);
+
+    setTimeout(() => {
+        petal.remove();
+    }, fallDuration * 1000);
+}
+setInterval(createPetal, 200);
