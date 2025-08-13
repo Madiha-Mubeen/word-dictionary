@@ -57,6 +57,9 @@ const petalImages = [
     "star-anise.png"
 ];
 
+let petalInterval;
+let petalsAreFalling = true;
+
 function createPetal() { 
     const petal = document.createElement("img");
     petal.classList.add("petal");
@@ -78,4 +81,23 @@ function createPetal() {
         petal.remove();
     }, fallDuration * 1000);
 }
-setInterval(createPetal, 200);
+function startPetals() {
+    if (!petalInterval) {
+        petalInterval = setInterval(createPetal, 200);
+    }
+}
+function stopPetals() {
+    clearInterval(petalInterval);
+    petalInterval = null;
+}
+
+document.getElementById("toggle-petals").addEventListener("click", () => {
+    if (petalsAreFalling) {
+        stopPetals();
+        document.getElementById("toggle-petals").textContent = "start flowers <3";
+    } else {
+        startPetals();
+        document.getElementById("toggle-petals").textContent = "stop flowers :/";
+    }
+    petalsAreFalling = !petalsAreFalling;
+});
