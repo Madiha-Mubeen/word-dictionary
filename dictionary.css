@@ -160,13 +160,37 @@ body {
     position: fixed;
     top: 20px;
     right: 20px;
-    z-index: 1000;
-    background-color: #bfeb8d;
+    pointer-events: auto;
+    background-color: #a5d178;
+    background: linear-gradient(135deg, #a0ecec, #81f7ff);
+    padding: 12px 24px;
     border: none;
-    padding: 10px 20px;
-    border-radius: 5px;
-    font-size: 1rem;
+    border-radius: 30px;
+    z-index: 1000;
     cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    color: #916363;
+    box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+    font-family: "Emphesis", cursive;
+}
+#toggle-petals:hover {
+    transform: scale(1.08);
+    box-shadow: 0 6px 14px rgba(0,0,0,0.25);
+}
+#toggle-petals:active {
+    transform: scale(0.95);
+    box-shadow: 0 3px 8px rgba(0,0,0,0.2);
+}
+@keyframes sparkle {
+    0% { box-shadow: 0 0 5px #d2eecf, 0 0 10px #9afd91, 0 0 20px #8ffd73; }
+    50% { box-shadow: 0 0 8px #beecd5, 0 0 14px #9afd91, 0 0 26px #8ffd73; }
+    100% { box-shadow: 0 0 5px #c0e9d0, 0 0 10px #9afd91, 0 0 20px #8ffd73;}
+}
+
+#toggle-petals.glow {
+    animation: sparkle 1.5s infinite alternate;
 }
 @keyframes fall {
     to { transform: translateY(100vh) rotate(360deg);}
@@ -178,4 +202,11 @@ body {
 }
 .hidden {
     display: none;
+}
+
+h2 {
+    font-size: 1.9rem;
+    color: #ff80bf;
+    margin-bottom: 10px;
+    text-align: center;
 }

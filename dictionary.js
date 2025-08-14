@@ -1,7 +1,44 @@
+
 const url = "https://api.dictionaryapi.dev/api/v2/entries/en/";
 const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
+
+const wordList = ["serendipity", "emphemeral", "mellifluous", "sonder", "efferevescent", "ethereal", "luminescence", "halcyon", "petrichor"];
+
+function getRandomWord() {
+    const today = new Date().toDateString();
+    const savedData = JSON.parse(localStorage.getItem("wordOfTheDay"));
+
+    if (savedData && savedData.date === today) {
+        return savedData.word;
+    }
+    const randomWord = wordList[Math.floor(Math.random() * wordList.length)];
+    localStorage.setItem("wordOfTheDay", JSON.stringify({ date: today, word: randomWord }));
+    return randomWord;
+}
+function loadWordOfTheDay() {
+    const wotd = getRandomWord();
+    fetch(`${url}${wotd}`)
+    .then(res => res.json())
+    .then(data => {
+        result.innerHTML = ` 
+        <h2> New Word Everyday: <em>${wotd}</em></h2>
+        <div class="details">
+            <p>${data[0].meanings[0].partOfSpeech}</p>
+            <p>/${data[0].phonetic || ''}/</p>
+        </div>
+        <p class="word-meaning">${data[0].meanings[0].definitions[0].definition}</p>
+        <p class="word-example">${data[0].meanings[0].definitions[0].example || ''}</p>`;
+    })
+    .catch(() => {
+        result.innerHTML =`<h3 class="error">OOPs!!! Couldn't able to load the Word of the Day</h3>`;
+    });
+}
+loadWordOfTheDay();
+
+
+
 
 btn.addEventListener("click", () => {
     const inpWord = document.getElementById("inp-word").value.trim();
@@ -101,3 +138,5 @@ document.getElementById("toggle-petals").addEventListener("click", () => {
     }
     petalsAreFalling = !petalsAreFalling;
 });
+
+document.getElementById("toggle-petals").classList.add("glow");
