@@ -173,7 +173,7 @@ body {
     color: #916363;
     box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     transition: transform 0.15s ease, box-shadow 0.15s ease;
-    font-family: "Emphesis", cursive;
+    font-family: "Griffy", cursive;
 }
 #toggle-petals:hover {
     transform: scale(1.08);
@@ -205,8 +205,23 @@ body {
 }
 
 h2 {
-    font-size: 1.9rem;
-    color: #ff80bf;
+    font-size: 1.7rem;
+    font-family: "Griffy", cursive;
+    color: #348f83;
     margin-bottom: 10px;
     text-align: center;
+}
+.new-word {
+    background-color: #e8f5ef;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: Arial, sans-serif;
+}
+.ipa {
+    font-style: italic;
+    color: #555;
+}
+.definition {
+    margin-top: 5px;
+    font-size: 1.1rem;
 }

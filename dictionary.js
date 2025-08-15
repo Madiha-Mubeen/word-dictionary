@@ -22,6 +22,9 @@ function loadWordOfTheDay() {
     fetch(`${url}${wotd}`)
     .then(res => res.json())
     .then(data => {
+        const wordData = data[0];
+        const meanings = wordData.meanings[0];
+
         result.innerHTML = ` 
         <h2> New Word Everyday: <em>${wotd}</em></h2>
         <div class="details">
@@ -30,6 +33,14 @@ function loadWordOfTheDay() {
         </div>
         <p class="word-meaning">${data[0].meanings[0].definitions[0].definition}</p>
         <p class="word-example">${data[0].meanings[0].definitions[0].example || ''}</p>`;
+
+        examples = meanings.definitions
+        .map(def => def.example)
+        .filter(Boolean);
+
+        if (examples.length > 0) {
+            document.getElementById("showExamplesBtn").style.display = "inline-block";
+        }
     })
     .catch(() => {
         result.innerHTML =`<h3 class="error">OOPs!!! Couldn't able to load the Word of the Day</h3>`;
@@ -140,3 +151,8 @@ document.getElementById("toggle-petals").addEventListener("click", () => {
 });
 
 document.getElementById("toggle-petals").classList.add("glow");
+
+
+let examples = [];
+
+
