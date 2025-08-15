@@ -18,32 +18,35 @@ function getRandomWord() {
     return randomWord;
 }
 function loadWordOfTheDay() {
-    const wotd = getRandomWord();
-    fetch(`${url}${wotd}`)
+    const word = getRandomWord();
+    fetch(`${url}${word}`)
     .then(res => res.json())
     .then(data => {
         const wordData = data[0];
         const meanings = wordData.meanings[0];
 
-        result.innerHTML = ` 
-        <h2> New Word Everyday: <em>${wotd}</em></h2>
-        <div class="details">
-            <p>${data[0].meanings[0].partOfSpeech}</p>
-            <p>/${data[0].phonetic || ''}/</p>
-        </div>
-        <p class="word-meaning">${data[0].meanings[0].definitions[0].definition}</p>
-        <p class="word-example">${data[0].meanings[0].definitions[0].example || ''}</p>`;
+        examples = meanings.definitions.map(def => def.example).filter(Boolean);
 
-        examples = meanings.definitions
-        .map(def => def.example)
-        .filter(Boolean);
-
-        if (examples.length > 0) {
-            document.getElementById("showExamplesBtn").style.display = "inline-block";
+        let examplesHTML = "";
+        if(examples.length > 0) {
+            examplesHTML = `
+            <h4>.e.g sentences:: </h4>
+            <ul>
+                ${examples.map(ex => `<li>${ex}</li>`).join("")}
+            </ul>`;
         }
+        result.innerHTML = `
+        <h2> New Word Everyday: <em>${word}</em></h2>
+        <div class="details">
+            <p>${meanings.partOfSpeech}</p>
+            <p>${wordData.phonetic || ''}/</p>
+        </div>
+        <p class="word-meaning">${meanings.definitions[0].definition}</p>
+        <p class="word-example">${meanings.definitions[0].example || ''}</p>
+        ${examplesHTML}`;
     })
     .catch(() => {
-        result.innerHTML =`<h3 class="error">OOPs!!! Couldn't able to load the Word of the Day</h3>`;
+        result.innerHTML = `<h3 class="error">OOPs!!! Could not able to load <strong><i>Word Of Every Day</i></strong></h3>`;
     });
 }
 loadWordOfTheDay();
