@@ -4,7 +4,7 @@ const result = document.getElementById("result");
 const sound = document.getElementById("sound");
 const btn = document.getElementById("search-btn");
 
-const wordList = ["serendipity", "emphemeral", "mellifluous", "sonder", "efferevescent", "ethereal", "luminescence", "halcyon", "petrichor"];
+const wordList = ["serendipity", "ephemeral", "mellifluous", "sonder", "effervescent", "ethereal", "luminescence", "halcyon", "petrichor"];
 
 function getRandomWord() {
     const today = new Date().toDateString();
